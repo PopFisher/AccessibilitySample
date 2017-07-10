@@ -1,16 +1,15 @@
 package com.accessibility.utils;
 
 import android.content.Context;
-import android.os.Build;
+import android.content.Intent;
 import android.provider.Settings;
 import android.text.TextUtils;
-
-import java.util.Locale;
 
 /**
  * 辅助功能相关检查的帮助类
  */
 public class AccessibilityUtil {
+    private static final String ACCESSIBILITY_SERVICE_PATH = "com.accessibility.AccessibilitySampleService";
     /**
      * 判断cms是否有辅助功能权限，注意：目前辅助功能是注册在applock上的service
      *
@@ -30,8 +29,7 @@ public class AccessibilityUtil {
         }
 
         String packageName = context.getPackageName();
-        String accessibilityServicePath = "ks.cm.antivirus.applock.accessibility.AppLockAccessibilityService";
-        final String serviceStr = packageName + "/" + accessibilityServicePath;
+        final String serviceStr = packageName + "/" + ACCESSIBILITY_SERVICE_PATH;
         if (accessibilityEnabled == 1) {
             TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
 
@@ -49,5 +47,10 @@ public class AccessibilityUtil {
             }
         }
         return false;
+    }
+
+    public static Intent getAccessibilitySettingPageIntent(Context context) {
+        // 一些品牌的手机可能不是这个Intent,需要适配
+        return new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
     }
 }

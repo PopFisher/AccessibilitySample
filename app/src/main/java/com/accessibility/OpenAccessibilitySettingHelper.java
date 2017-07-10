@@ -13,7 +13,7 @@ public class OpenAccessibilitySettingHelper {
 
     public static void jumpToSettingPage(Context context) {
         try {
-            Intent intent = new Intent(context,  AccessibilityFacadeBaseActivity.class);
+            Intent intent = new Intent(context,  AccessibilityOpenHelperActivity.class);
             intent.putExtra(ACTION, ACTION_START_ACCESSIBILITY_SETTING);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);

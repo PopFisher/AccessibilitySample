@@ -16,9 +16,23 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".AccessibilityOpenHelperActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:process=":AccessibilityService"
+            android:taskAffinity="com.accessibility"
+            android:theme="@style/Accessibility.Transparent.Activity" />
+
+        <activity android:name=".AccessibilityNormalSample"
+            android:process=":AccessibilityService"/>
+
         // 注册辅助功能服务
         <service android:name=".AccessibilitySampleService"
-            android:label="@string/accessibility_tip">
+            android:label="@string/accessibility_tip"
+            android:exported="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            android:process=":AccessibilityService">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
@@ -27,8 +41,6 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/accessibility_config"/>
         </service>
-        // 申请辅助功能所需权限
-        <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
     </application>
 
 </manifest>

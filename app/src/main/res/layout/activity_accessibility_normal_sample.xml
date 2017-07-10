@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_accessibility_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,25 +7,32 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context="com.accessibility.AccessibilityMainActivity">
+    android:orientation="vertical">
 
-    <TextView
+    <CheckBox
+        android:id="@+id/normal_sample_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="复选框开关"/>
+
+    <RadioButton
+        android:id="@+id/normal_sample_radiobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="单选按钮"/>
+
+    <ToggleButton
+        android:id="@+id/normal_sample_togglebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="OnOff开关"/>
 
     <Button
         android:id="@+id/open_accessibility_setting"
         android:layout_marginTop="20dp"
-        android:text="打开辅助功能开关"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/accessibility_find_and_click"
-        android:layout_marginTop="20dp"
-        android:text="模拟辅助功能点击View"
+        android:text="退出本页面"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>
