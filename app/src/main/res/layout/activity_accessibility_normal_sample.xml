@@ -30,7 +30,7 @@
         android:text="OnOff开关"/>
 
     <Button
-        android:id="@+id/open_accessibility_setting"
+        android:id="@+id/normal_sample_back"
         android:layout_marginTop="20dp"
         android:text="退出本页面"
         android:layout_width="match_parent"

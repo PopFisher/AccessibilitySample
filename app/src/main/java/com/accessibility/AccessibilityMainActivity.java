@@ -14,6 +14,7 @@ public class AccessibilityMainActivity extends Activity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accessibility_main);
         initView();
+        AccessibilityOperator.getInstance().init(this);
     }
 
     private void initView() {

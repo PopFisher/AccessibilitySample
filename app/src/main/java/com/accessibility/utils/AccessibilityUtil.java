@@ -5,13 +5,15 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.text.TextUtils;
 
+import com.accessibility.AccessibilitySampleService;
+
 /**
  * 辅助功能相关检查的帮助类
  */
 public class AccessibilityUtil {
-    private static final String ACCESSIBILITY_SERVICE_PATH = "com.accessibility.AccessibilitySampleService";
+    private static final String ACCESSIBILITY_SERVICE_PATH = AccessibilitySampleService.class.getCanonicalName();
     /**
-     * 判断cms是否有辅助功能权限，注意：目前辅助功能是注册在applock上的service
+     * 判断是否有辅助功能权限
      *
      * @param context
      * @return
@@ -30,6 +32,7 @@ public class AccessibilityUtil {
 
         String packageName = context.getPackageName();
         final String serviceStr = packageName + "/" + ACCESSIBILITY_SERVICE_PATH;
+        AccessibilityLog.printLog("serviceStr: " + serviceStr);
         if (accessibilityEnabled == 1) {
             TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
 
