@@ -94,8 +94,11 @@ public class AccessibilityNormalSample extends Activity implements View.OnClickL
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                boolean result = AccessibilityOperator.getInstance().clickById("com.accessibility:id/normal_sample_back");
-                AccessibilityLog.printLog(result ? "退出本页面模拟点击成功" : "退出本页面模拟点击失败");
+//                boolean result = AccessibilityOperator.getInstance().clickById("com.accessibility:id/normal_sample_back");
+//                AccessibilityLog.printLog(result ? "退出本页面模拟点击成功" : "退出本页面模拟点击失败");
+                // 下面这个模拟点击系统返回键
+                boolean result = AccessibilityOperator.getInstance().clickBackKey();
+                AccessibilityLog.printLog(result ? "返回键模拟点击成功" : "返回键模拟点击失败");
             }
         }, 6000);
     }
