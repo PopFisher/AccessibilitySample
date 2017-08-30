@@ -9,9 +9,7 @@
 &emsp;&emsp;辅助功能（AccessibilityService）其实是一个Android系统提供给的一种服务，本身是继承Service类的。这个服务提供了增强的用户界面，旨在帮助残障人士或者可能暂时无法与设备充分交互的人们。
 
 &emsp;&emsp;从开发者的角度看，其实就是提供两种功能：查找界面元素，实现模拟点击。实现一个辅助功能服务要求继承AccessibilityService类并实现它的抽象方法。自定义一个服务类AccessibilitySampleService（这个命名可以随意），继承系统的AccessibilityService并覆写onAccessibilityEvent和onInterrupt方法。编写好服务类之后，在系统配置文件（AndroidManifest.xml）中注册服务。完成前面两个步骤就完成了基本发辅助功能服务注册与配置，具体的功能实现需要在onAccessibilityEvent中完成，根据onAccessibilityEvent回调方法传递过来的AccessibilityEvent对象可以对事件进行过滤，结合AccessibilitySampleService本身提供的查找节点与模拟点击相关的接口即可实现权限节点的查找与点击。
-
 ![](/docpic/accessibility.png "辅助功能类")
-
 
 ## 辅助功能基本配置和框架搭建
 ### 创建自定义辅助功能服务类
@@ -96,9 +94,9 @@
 ![](/docpic/sys_accessibility_page.jpg "小米上叫做无障碍")
 ## 辅助功能实战解析
 
-### 实现界面自动点击操作
+### 实现界面自动点击操作，动画有点模糊，将就看吧
 
-![](/docpic/accessibility_op.mp4 "操作演示")
+![](/docpic/accessibility_op.gif "操作演示")
 
 ### 界面节点与模拟点击
 &emsp;&emsp;AccessibilityOperator封装了辅助功能的界面查找与模拟点击事件等操作，下面介绍几个关键的技术点。
