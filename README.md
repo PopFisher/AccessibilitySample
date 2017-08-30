@@ -98,7 +98,7 @@
 
 ![](/docpic/accessibility_op.gif "操作演示")
 
-### 界面节点与模拟点击
+### 界面节点查找与模拟点击
 &emsp;&emsp;AccessibilityOperator封装了辅助功能的界面查找与模拟点击事件等操作，下面介绍几个关键的技术点。
 
 **界面节点查找操作**
