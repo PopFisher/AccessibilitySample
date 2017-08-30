@@ -73,17 +73,14 @@ public class AccessibilityOperator {
     }
 
     /**
-     * 根据Text搜索所有符合条件的节点, 模糊搜索方式;
-     * @param text
-     * @return
+     * 根据Text搜索所有符合条件的节点, 模糊搜索方式
      */
-    public boolean clickByText(String text) {
+    public List<AccessibilityNodeInfo> findNodesByText(String text) {
         AccessibilityNodeInfo nodeInfo = getRootNodeInfo();
         if (nodeInfo != null) {
-            List<AccessibilityNodeInfo> nodeInfos = nodeInfo.findAccessibilityNodeInfosByText(text);
-            return performClick(nodeInfos);
+           return nodeInfo.findAccessibilityNodeInfosByText(text);
         }
-        return false;
+        return null;
     }
 
     /**
@@ -91,20 +88,33 @@ public class AccessibilityOperator {
      * 这个只适用于自己写的界面，因为ID可能重复
      * api要求18及以上
      * @param viewId
-     * @return
      */
-    public boolean clickById(String viewId) {
+    public List<AccessibilityNodeInfo> findNodesById(String viewId) {
         AccessibilityNodeInfo nodeInfo = getRootNodeInfo();
         if (nodeInfo != null) {
             if (Build.VERSION.SDK_INT >= 18) {
-                List<AccessibilityNodeInfo> nodeInfos = nodeInfo.findAccessibilityNodeInfosByViewId(viewId);
-                return performClick(nodeInfos);
+                return nodeInfo.findAccessibilityNodeInfosByViewId(viewId);
             }
         }
-        return false;
+        return null;
     }
 
-    private boolean performClick( List<AccessibilityNodeInfo> nodeInfos) {
+    public boolean clickByText(String text) {
+        return performClick(findNodesByText(text));
+    }
+
+    /**
+     * 根据View的ID搜索符合条件的节点,精确搜索方式;
+     * 这个只适用于自己写的界面，因为ID可能重复
+     * api要求18及以上
+     * @param viewId
+     * @return 是否点击成功
+     */
+    public boolean clickById(String viewId) {
+        return performClick(findNodesById(viewId));
+    }
+
+    private boolean performClick(List<AccessibilityNodeInfo> nodeInfos) {
         if (nodeInfos != null && !nodeInfos.isEmpty()) {
             AccessibilityNodeInfo node;
             for (int i = 0; i < nodeInfos.size(); i++) {
