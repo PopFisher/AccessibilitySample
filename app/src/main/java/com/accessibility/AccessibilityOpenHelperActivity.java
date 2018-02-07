@@ -136,10 +136,7 @@ public class AccessibilityOpenHelperActivity extends Activity {
                     }
                     Looper.loop();
                 }
-
-                //超过2分钟超时，就释放timer。
-                //解决： 可能有这样的一个场景，用户打开红包辅助功能，不勾选“猎豹安全大师”就退出到其他地方
-                //      然后再另外一个场景又去勾选辅助功能，这个时候还是弹出红包场景，用户体验就很怪了
+                // 超过2分钟超时，就释放timer。
                 mTimeoutCounter++;
                 if (mTimeoutCounter > TIMEOUT_MAX_INTERVAL) {
                     freeTimeTask();
